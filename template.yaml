@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: StudyApp
+
+Globals:
+  Function:
+    Timeout: 20
+
+Resources:
+  LambdaRequestStreamHandlerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      MemorySize: 128
+      Handler: com.novardis.train.LambdaRequestStreamHandler
+      CodeUri: C:\_aws
+      Runtime: java11
