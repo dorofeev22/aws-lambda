@@ -14,3 +14,29 @@ Resources:
       Handler: com.novardis.train.LambdaRequestStreamHandler
       CodeUri: C:\_aws
       Runtime: java11
+  ApiRequestHandlerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      MemorySize: 128
+      CodeUri: .
+      Handler: com.novardis.train.MyRequestHandler
+      Runtime: java11
+      Events:
+        GetAll:
+          Type: HttpApi
+          Properties:
+            Path: /api
+            Method: get
+  NewDocumentFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      MemorySize: 128
+      CodeUri: .
+      Handler: com.novardis.train.NewDocumentHandler
+      Runtime: java11
+      Events:
+        Post:
+          Type: HttpApi
+          Properties:
+            Path: /api
+            Method: post
